@@ -97,3 +97,74 @@ public class Main {
         System.out.println("Из них котов: " + Animals.catCount);
         System.out.println("Из них собак: " + Animals.dogCount);
     }
+
+
+
+
+
+    задание 2 
+    interface GeometricShape {
+    double getArea();
+    double getPerimeter();
+    default void setFillColor(String color) {
+        System.out.println("Цвет заливки: " + color);
+    }
+    default void setStrokeColor(String color) {
+        System.out.println("Цвет обводки: " + color);
+    }
+}
+class Circle
+        implements GeometricShape {
+    double radius;
+    public Circle(double radius) {
+        this.radius = radius;
+    }
+    public double getArea() {
+        return Math.PI * radius * radius; }
+    public double getPerimeter() {
+        return 2 * Math.PI * radius;
+    }
+}
+class Rectangle
+        implements GeometricShape {
+    double width, height;
+    public Rectangle(double width, double height) {
+        this.width = width; this.height = height;
+    } public double getArea() {
+        return width * height;
+    }
+    public double getPerimeter() {
+        return 2 * (width + height); }
+}
+class Triangle
+        implements GeometricShape {
+    double a, b, c;
+    public Triangle(double a, double b, double c) {
+        this.a = a; this.b = b; this.c = c; }
+    public double getArea() {
+        double p = getPerimeter() / 2;
+        return Math.sqrt(p * (p - a) * (p - b) * (p - c));
+    }
+    public double getPerimeter() { return a + b + c;
+    }
+}
+ class Shapes { public static void main(String[] args) {
+    Circle circle = new Circle(5);
+    Rectangle rect = new Rectangle(4, 6);
+    Triangle tri = new Triangle(3, 4, 5);
+    System.out.println(" ХАРАКТЕРИСТИКИ КРУГА ");
+    System.out.println("Площадь: " + circle.getArea());
+    System.out.println("Периметр: " + circle.getPerimeter());
+    circle.setFillColor("Красный"); circle.setStrokeColor("Черный");
+    System.out.println(" ХАРАКТЕРИСТИКИ ПРЯМОУГОЛЬНИКА ");
+    System.out.println("Площадь: " + rect.getArea());
+    System.out.println("Периметр: " + rect.getPerimeter());
+    rect.setFillColor("Синий");
+    rect.setStrokeColor("Белый");
+    System.out.println(" ХАРАКТЕРИСТИКИ ТРЕУГОЛЬНИКА ");
+    System.out.println("Площадь: " + tri.getArea());
+    System.out.println("Периметр: " + tri.getPerimeter());
+    tri.setFillColor("Зеленый");
+    tri.setStrokeColor("Желтый");
+        }
+}
